@@ -23,7 +23,7 @@ public class PseudoWebHDFSConnectionTest {
     public void setUp() throws Exception {
         System.out.println(" setUp... per Test ...");
         //pConn = new PseudoWebHDFSConnection("http://api.0.efoxconn.com:14000", "wesley", "anything");
-        pConn = new PseudoWebHDFSConnection("http://ec2-34-204-179-200.compute-1.amazonaws.com:50070", "vora", "");
+        pConn = new PseudoWebHDFSConnection("http://master.i-0eb83c3478911ed5d.cluster:50070", "vora", "");
     }
 
     @Test
@@ -40,7 +40,7 @@ public class PseudoWebHDFSConnectionTest {
 
     @Test
     public void create() throws MalformedURLException, IOException, AuthenticationException {
-        String path = "tmp/logs/data2.log";
+        String path = "user/vora/data2.log";
         FileInputStream is = new FileInputStream(new File("C://data//data.log"));
         pConn.create(path, is);
 
@@ -51,9 +51,9 @@ public class PseudoWebHDFSConnectionTest {
 
     @Test
     public void append() throws MalformedURLException, IOException, AuthenticationException {
-        String path = "tmp/logs/data.log";
+        String path = "user/vora/data2.log";
         String newLine = System.getProperty("line.separator");
-        String initialString = "newline2,1999" + newLine;
+        String initialString = "\"1514283799\",\"0b8d8f58-9a98-49d5-8c0e-3ae40ca485cc,\",\"ced1a569-000f-f010-9c53-2bb27fb3b000,\",\"KRDMMXDOMTSE35P0,\",\"{\"queueName\":\"videochannel\",\"payloadType\":\"json\",\"fee\":10,\"customerID\":\"ced1a569-000f-f010-9c53-2bb27fb3b000\",\"correlationId\":\"0b8d8f58-9a98-49d5-8c0e-3ae40ca485cc\",\"userName\":\"hung@netobjex.com\",\"deviceId\":\"KRDMMXDOMTSE35P0\",\"payload_timestamp\":\"1514283799 \",\"fileId\":\"0b8d8f58-9a98-49d5-8c0e-3ae40ca485cc\"},\",\"json,\",\"videochannel\"" + newLine;
         InputStream in = IOUtils.toInputStream(initialString, StandardCharsets.UTF_8);
         try {
             System.out.println(pConn.append(path, in));
