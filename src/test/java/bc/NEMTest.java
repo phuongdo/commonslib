@@ -10,6 +10,7 @@ import org.nem.core.crypto.PrivateKey;
 import org.nem.core.crypto.PublicKey;
 import org.nem.core.messages.SecureMessage;
 import org.nem.core.model.Account;
+import org.nem.core.model.Address;
 import org.nem.core.model.FeeUnitAwareTransactionFeeCalculator;
 import org.nem.core.model.MessageTypes;
 import org.nem.core.model.ncc.NemAnnounceResult;
@@ -53,9 +54,10 @@ public class NEMTest {
 //        System.out.println(accountMetaDataPair.getEntity().getBalance());
 
         this.senderPrivateAccount = new Account(new KeyPair(PrivateKey
-                .fromHexString("xxx-xxx-xxx")));
+                .fromHexString("ed8984ba76793c74b702c9b6ab2a7ee468a50c8c608574d2debff60d1f7d5e05")));
         this.recipientPublicAccount = new Account(new KeyPair(
                 PublicKey.fromHexString("ce38a3dd2e772a8ab6ea93fddc5019c77a3152bef27ff72b619ecf5be8811b0d")));
+//        this.recipientPublicAccount = new Account(Address.fromEncoded("TDBL7E-ZIG5BK-O5YFFT-KWSYKK-LOJUAA-ADS2PC-572D"));
     }
 
     @Test
